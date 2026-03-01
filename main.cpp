@@ -40,3 +40,19 @@ T* merge(const T* a, size_t sa, const T* b, size_t sb, T* c)
 
   return out;
 }
+
+int main()
+{
+  int a[] = {1, 4, 6};
+  int b[] = {2, 3, 7};
+  int c[6];
+
+  int* end = merge(a, 3, b, 3, c);
+
+  std::cout << "Result: ";
+  for (int* p = c; p != end; ++p)
+  {
+    std::cout << *p << ' ';
+  }
+  std::cout << "\n";
+}
