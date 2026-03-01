@@ -9,5 +9,20 @@ T* merge(const T* a, size_t sa, const T* b, size_t sb, T* c)
   const T* b_end = b + sb;
   T* out = c;
 
+  while (a_it != a_end && b_it != b_end)
+  {
+    if (*b_it < *a_it)
+    {
+      *out = *b_it;
+      ++b_it;
+    }
+    else
+    {
+      *out = *a_it;
+      ++a_it;
+    }
+    ++out;
+  }
+
   return out;
 }
