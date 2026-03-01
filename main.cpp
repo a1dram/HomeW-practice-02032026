@@ -24,5 +24,19 @@ T* merge(const T* a, size_t sa, const T* b, size_t sb, T* c)
     ++out;
   }
 
+  while (a_it != a_end)
+  {
+    *out = *a_it;
+    ++a_it;
+    ++out;
+  }
+
+  while (b_it != b_end)
+  {
+    *out = *b_it;
+    ++b_it;
+    ++out;
+  }
+
   return out;
 }
