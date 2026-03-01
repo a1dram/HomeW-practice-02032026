@@ -11,14 +11,14 @@ T* merge(const T* a, size_t sa, const T* b, size_t sb, T* c)
 
   while (a_it != a_end && b_it != b_end)
   {
-    if (*b_it < *a_it)
+    if (*b_it < *a_it) // нужен T::operator<(const T&, const T&)
     {
-      *out = *b_it;
+      *out = *b_it; // нужен T::operator=(const T&)
       ++b_it;
     }
     else
     {
-      *out = *a_it;
+      *out = *a_it; // нужен T::operator=(const T&)
       ++a_it;
     }
     ++out;
@@ -26,33 +26,17 @@ T* merge(const T* a, size_t sa, const T* b, size_t sb, T* c)
 
   while (a_it != a_end)
   {
-    *out = *a_it;
+    *out = *a_it; // нужен T::operator=(const T&)
     ++a_it;
     ++out;
   }
 
   while (b_it != b_end)
   {
-    *out = *b_it;
+    *out = *b_it; // нужен T::operator=(const T&)
     ++b_it;
     ++out;
   }
 
   return out;
-}
-
-int main()
-{
-  int a[] = {1, 4, 6};
-  int b[] = {2, 3, 7};
-  int c[6];
-
-  int* end = merge(a, 3, b, 3, c);
-
-  std::cout << "Result: ";
-  for (int* p = c; p != end; ++p)
-  {
-    std::cout << *p << ' ';
-  }
-  std::cout << "\n";
 }
